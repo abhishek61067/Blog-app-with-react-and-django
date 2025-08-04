@@ -11,46 +11,75 @@ A simple full-stack blog application built with:
 
 ## **Project Structure**
 
+```bash
+
 project-root/
-├── backend/ # Django app
-│ ├── blog/ # Main blog app
-│ ├── config/ # Django project config
-│ ├── manage.py
-│ └── venv/ # Python virtual environment
-└── frontend/ # React app (Chakra UI + React Query)
+├── backend/        # Django app
+│   ├── blog/       # Main blog app
+│   ├── config/     # Django project config
+│   ├── manage.py
+│   └── venv/       # Python virtual environment
+└── frontend/       # React app (Chakra UI + React Query)
+```
 
 ## **Backend Setup (Django)**
 
-### 1. Create Virtual Environment
+```bash
+cd backend
+```
 
-From the `backend/` folder:
+1. Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
 2. Activate Virtual Environment
+
+```bash
    Windows:
-   venv\Scripts\activate
+   `venv\Scripts\activate`
    Linux/macOS:
-   source venv/bin/activate
+   `source venv/bin/activate`
+```
 
 3. Install Dependencies
+
+   ```bash
    pip install -r requirements.txt
+   ```
 
 4. Apply Migrations
-   python manage.py migrate
+
+   ```bash
+    python manage.py migrate
+   ```
 
 5. Create Superuser (optional, for admin panel)
-   python manage.py createsuperuser
+
+   ```bash
+    python manage.py createsuperuser
+   ```
 
 6. Run Development Server
+   ```bash
    python manage.py runserver
+   ```
 
 ## **Frontend Setup (React)**
 
+```bash
+   cd frontend
+```
+
 7. Install Dependencies
-   From the frontend/ folder:
+
+```bash
    npm install
+```
+
 8. Start Development Server
+
+```bash
    npm run dev
+```
