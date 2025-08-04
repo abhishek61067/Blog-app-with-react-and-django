@@ -25,7 +25,7 @@ http://localhost:8000/
 
 #### Sample Request
 
-````json
+```json
 {
   "username": "john_doe",
   "password": "securepassword"
@@ -90,66 +90,49 @@ Endpoint: POST /posts/
 Description: Create new post (Authenticated)
 
 Sample Request
-json
-Copy
-Edit
+
 {
   "title": "New Post",
   "content": "This is my new post content"
 }
 Sample Response
-json
-Copy
-Edit
+
 {
   "id": 2,
   "title": "New Post",
   "content": "This is my new post content",
-  "author": "john_doe"
+  "author": "john_doe",
+  "created_at":"2025-02-09",
 }
 6. Edit Post
-Endpoint: PUT /posts/<id>/
+Endpoint: PUT /posts/<id>/update
 Description: Edit a post (only author) (Authenticated)
 
 Sample Request
-json
-Copy
-Edit
+
 {
   "title": "Updated Title",
   "content": "Updated content here"
 }
 Sample Response
-json
-Copy
-Edit
+
 {
   "id": 2,
   "title": "Updated Title",
   "content": "Updated content here",
-  "author": "john_doe"
+  "author": "john_doe",
+  "created_at":"2025-02-09"
 }
 7. Delete Post
-Endpoint: DELETE /posts/<id>/
+Endpoint: DELETE /posts/<id>/delete
 Description: Delete a post (only author) (Authenticated)
 
 Sample Response
-json
-Copy
-Edit
+
 {
   "message": "Post deleted successfully"
 }
-yaml
-Copy
-Edit
 
----
 
-### **Best Way to Use**
-1. Save this as `api_doc.md` in your project root.
-2. In your `README.md`, just add:
-   ```markdown
-   ## API Documentation
-   See [API Documentation](./api_doc.md) for all endpoints and sample requests.
-````
+
+```
