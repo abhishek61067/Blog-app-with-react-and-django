@@ -18,24 +18,28 @@ http://localhost:8000/
 
 ## Endpoints
 
-### 1. Register User
-
-**Endpoint:** `POST /register/`  
-**Description:** Register a new user (Public)
-
-#### Sample Request
-
 ```json
+
+1. Register User
+
+Endpoint: `POST /register/`
+Description: Register a new user (Public)
+
+Sample Request
+
+
 {
   "username": "john_doe",
   "password": "securepassword"
 }
+
 Sample Response
 
 {
   "message": "User registered successfully",
   "user_id": 1
 }
+
 2. Login
 Endpoint: POST /login/
 Description: Return JWT for valid credentials (Public)
