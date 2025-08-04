@@ -40,7 +40,7 @@ python -m venv venv
    Windows:
    `venv\Scripts\activate`
    Linux/macOS:
-   `source venv/bin/activate`
+   `source venv/Scripts/activate`
 ```
 
 3. Install Dependencies
