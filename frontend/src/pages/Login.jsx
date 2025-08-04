@@ -12,8 +12,11 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useLogin } from "../services/auth/auth";
 import { useAuthStore } from "../store/authStore";
+import { useToast } from "@chakra-ui/react";
 
 const Login = () => {
+  const { toast } = useToast();
+
   const { setTokens } = useAuthStore();
 
   const { mutateAsync: login } = useLogin();
@@ -40,9 +43,13 @@ const Login = () => {
         accessToken: access,
         refreshToken: refresh,
       });
-      navigate("/product");
+      navigate("/posts");
     } catch (error) {
-      console.error("Login failed: ", error);
+      toast({
+        title: "Login failed",
+        description: error.response?.data?.message || "An error occurred",
+        status: "error",
+      });
     }
   };
 

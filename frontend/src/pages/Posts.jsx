@@ -3,6 +3,7 @@ import { Box, Heading, Text, Button, Spinner } from "@chakra-ui/react";
 import { usePosts, useDeletePost } from "../services/auth/posts/posts";
 import { useNavigate } from "react-router";
 import { useToast } from "@chakra-ui/react";
+import { useAuthStore } from "../store/authStore";
 
 export default function BlogListPage() {
   const toast = useToast();
@@ -10,6 +11,7 @@ export default function BlogListPage() {
   const { data, isLoading, isError } = usePosts(page);
   const { mutateAsync: deletePostMutation } = useDeletePost();
   const navigate = useNavigate();
+  const { accessToken } = useAuthStore();
 
   if (isLoading) return <Spinner size="xl" />;
   if (isError) return <Text color="red.500">Failed to load posts</Text>;
@@ -40,35 +42,39 @@ export default function BlogListPage() {
           <Button mt={4} colorScheme="cyan" as="a" href={`/posts/${post.id}`}>
             View Details
           </Button>
-          <Button
-            mt={4}
-            ml={2}
-            colorScheme="cyan"
-            onClick={() => navigate(`/create-post/${post.id}`)}
-            variant={"outline"}
-          >
-            Edit
-          </Button>
-          <Button
-            mt={4}
-            ml={2}
-            colorScheme="red"
-            isLoading={deletePostMutation.isLoading}
-            onClick={() =>
-              deletePostMutation(post.id)
-                .then()
-                .catch((error) => {
-                  toast({
-                    title: "Error deleting post",
-                    description:
-                      error.response?.data?.message || "An error occurred",
-                    status: "error",
-                  });
-                })
-            }
-          >
-            Delete
-          </Button>
+          {accessToken && (
+            <>
+              <Button
+                mt={4}
+                ml={2}
+                colorScheme="cyan"
+                onClick={() => navigate(`/create-post/${post.id}`)}
+                variant={"outline"}
+              >
+                Edit
+              </Button>
+              <Button
+                mt={4}
+                ml={2}
+                colorScheme="red"
+                isLoading={deletePostMutation.isLoading}
+                onClick={() =>
+                  deletePostMutation(post.id)
+                    .then()
+                    .catch((error) => {
+                      toast({
+                        title: "Error deleting post",
+                        description:
+                          error.response?.data?.message || "An error occurred",
+                        status: "error",
+                      });
+                    })
+                }
+              >
+                Delete
+              </Button>
+            </>
+          )}
         </Box>
       ))}
 
