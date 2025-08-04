@@ -8,6 +8,8 @@ from .models import Post
 from .jwt_utils import generate_access_token, generate_refresh_token
 
 
+
+
 User = get_user_model()
 
 # --- Auth Views ---
@@ -153,3 +155,5 @@ def delete_post(request, post_id):
         except Post.DoesNotExist:
             return JsonResponse({'error': 'Post not found'}, status=404)
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+

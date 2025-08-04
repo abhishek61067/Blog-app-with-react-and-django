@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import register, login, logout, refresh_token, create_post, list_posts, get_post_detail, update_post, delete_post
+from django.conf.urls import handler404
+
 
 urlpatterns = [
     path('register/', register),
